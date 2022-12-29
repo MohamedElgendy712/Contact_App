@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.app-container{
+  display: flex;
+}
+
+.side-bar{
+  background-color: #f7f7f7;
+  width: 22rem;
+}
+
+.search-container,
+.search-section{
+  display: flex;
+  align-items: center;
+}
+.search-container{
+  padding: 15px 10px;
+  border-bottom: 1px solid #e3e3e3;
+}
+.search-section{
+  margin-right: 10px;
+}
+button{
+  background-color: white;
+  cursor: pointer;
+}
+.search-section,
+button{
+  background-color: white;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+}
+.search-section:hover,
+button:hover{
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+}
+button:active {
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
+  transform: translateY(1px);
+}
+
+.search-section input,
+button{
+  border: none;
+  font-size: 16px;
+}
+.search-section input:focus{
+  outline: none;
+}
+
+.contact-list{
+  list-style: none;
+  border-bottom: 1px solid #e3e3e3;
+  height: calc(100vh - 68px - 73px);
+  overflow-y: scroll;
+}
+
+.contact-list li{
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.contact-list li:hover{
+  background-color: #3A62F4;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.contact-list a{
+  text-decoration: none;
+  color: black;
+}
+.contact-list a:hover{
+  color: white;
+}
+
+.logo{
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+}
+.phone-icon{
+  margin-right: 10px;
+}
+
+
+.contact-container{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-item{
+  display: flex;
+}
+.contact-item .image{
+  width: 180px;
+  height: 180px;
+  background-color: red;
+  border-radius: 8px;
+  margin-right: 60px;
+}
+.contact-item .info{
+  display: flex;
+  flex-direction: column;
+}
+.contact-item .info h1,
+.contact-item .info h3{
+  margin: 0 0 12px 0;
+}
+.contact-item .info p{
+  margin: 0 0 25px 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+.contact-item .info .btns .edit{
+  margin-right: 10px;
+}
+
+.add-contact{
+  width: 40%;
+}
+.input-container{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.input-container label{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.input-container input{
+  border: none;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+  padding: 10px ;
+}
+#create{
+  border: none;
+  border-radius: 8px;
+  padding: 15px 25px;
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+  cursor: pointer;
+  background-color: #f7f7f7;
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+  display: block;
+  margin-left: auto;
+}
+#create:hover{
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+}
+#create:active{
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
+  transform: translateY(1px);
+}
