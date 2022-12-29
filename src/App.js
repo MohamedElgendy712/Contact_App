@@ -14,6 +14,7 @@ function App() {
   const handleSelectedContact = (contactId) => {
     const temp = JSONDATA.filter((ele) => ele.id === contactId)[0];
     setContact(temp);
+    
   }
 
 
