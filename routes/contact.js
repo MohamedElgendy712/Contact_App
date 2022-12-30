@@ -21,15 +21,15 @@ router.route('/')
     .catch(err => next(err))
 })
 .post( (req , res , next)=>{
-
+    
     let image = req.files.image
-
-    image.mv(path.resolve(__dirname + 'public/images' + image.name) , (err)=>{
+    console.log(image)
+    image.mv(path.resolve(__dirname , 'public/images' , image.name) , (err)=>{
         Contact.create({...req.body , photoUrl : '/images/' + image.name})
         .then(contact =>{
             res.statusCode = 200
             res.setHeader('content-type' , 'application/json')
-            res.json(contact)
+            res.redirect('http://localhost:3000')
         }, err => next(err))
         .catch(err => next(err))
     })
