@@ -20,11 +20,10 @@ router.route('/')
     }, err => next(err))
     .catch(err => next(err))
 })
-.post( (req , res , next)=>{
-    
+.post( async (req , res , next)=>{
+
     let image = req.files.image
-    console.log(image)
-    image.mv(path.resolve(__dirname , 'public/images' , image.name) , (err)=>{
+    image.mv(path.resolve(__dirname , '..' , 'public/img' , image.name) , (err)=>{
         Contact.create({...req.body , photoUrl : '/images/' + image.name})
         .then(contact =>{
             res.statusCode = 200
