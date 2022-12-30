@@ -24,7 +24,7 @@ router.route('/')
 
     let image = req.files.image
     image.mv(path.resolve(__dirname , '..' , 'public/img' , image.name) , (err)=>{
-        Contact.create({...req.body , photoUrl : path.resolve(__dirname , 'public/img' , image.name)})
+        Contact.create({...req.body , photoUrl : path.resolve(__dirname ,'..','public/img' , image.name)})
         .then(contact =>{
             res.statusCode = 200
             res.setHeader('content-type' , 'application/json')
