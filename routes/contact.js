@@ -1,8 +1,8 @@
 const express = require('express')
 const fileUpload = require('express-fileupload')
-const multer = require('multer')
 const path = require('path')
 const Contact = require('../models/contact')
+const uploadToCloud = require('../helper/uploadPhotoToCloud')
 
 const router = express.Router()
 
@@ -23,9 +23,12 @@ router.route('/')
 .post( async (req , res , next)=>{
 
     let image = req.files.image
-    image.mv(path.resolve(__dirname , '..' , 'public/img' , image.name) , (err)=>{
-        Contact.create({...req.body , photoUrl : path.resolve(__dirname ,'..','public/img' , image.name)})
-        .then(contact =>{
+    image.mv(path.resolve(__dirname , '..' , 'public/img' , image.name) , async(err)=>{
+
+        let url = await uploadToCloud(path.resolve(__dirname ,'..','public/img' , image.name) , image.name)
+        console.log(url)
+        Contact.create({...req.body , photoUrl : url})
+        .then(() =>{
             res.statusCode = 200
             res.setHeader('content-type' , 'application/json')
             res.redirect('http://localhost:3000')
@@ -44,7 +47,7 @@ router.route('/contactId')
     }, err => next(err))
     .catch(err => next(err))
 })
-.put((req , res , next) =>{
+.post((req , res , next) =>{
     Contact.findByIdAndUpdate(req.params.contactId , {$set : req.body} , {new : true})
     .then(contact =>{
         res.statusCode = 200
