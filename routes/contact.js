@@ -34,7 +34,7 @@ router.route('/')
     })
 })
 
-router.route('/contactId')
+router.route('/:contactId')
 .get((req , res , next) =>{
     Contact.findById(req.params.contactId)
     .then(contact =>{
@@ -44,7 +44,7 @@ router.route('/contactId')
     }, err => next(err))
     .catch(err => next(err))
 })
-.put((req , res , next) =>{
+.post((req , res , next) =>{
     Contact.findByIdAndUpdate(req.params.contactId , {$set : req.body} , {new : true})
     .then(contact =>{
         res.statusCode = 200
