@@ -26,7 +26,6 @@ router.route('/')
     image.mv(path.resolve(__dirname , '..' , 'public/img' , image.name) , async(err)=>{
 
         let url = await uploadToCloud(path.resolve(__dirname ,'..','public/img' , image.name) , image.name)
-        console.log(url)
         Contact.create({...req.body , photoUrl : url})
         .then(() =>{
             res.statusCode = 200
@@ -47,14 +46,24 @@ router.route('/:contactId')
     }, err => next(err))
     .catch(err => next(err))
 })
-.post((req , res , next) =>{
-    Contact.findByIdAndUpdate(req.params.contactId , {$set : req.body} , {new : true})
-    .then(contact =>{
-        res.statusCode = 200
-        res.setHeader('content-type' , 'application/json')
-        res.redirect('http://localhost:3000')
-    }, err => next(err))
-    .catch(err => next(err))
+.post(async (req , res , next) =>{
+
+    let url = ""
+    if(req.files != null && req.files.image ){
+        let image = req.files.image
+        image.mv(path.resolve(__dirname , '..' , 'public/img' , image.name) , async(err)=>{
+            url = await uploadToCloud(path.resolve(__dirname ,'..','public/img' , image.name) , image.name)
+        })
+    }
+
+    if(url === "")
+        await  Contact.findByIdAndUpdate(req.params.contactId , {$set : req.body} , {new : true})
+    else
+        await  Contact.findByIdAndUpdate(req.params.contactId , {$set : {...req.body , photoUrl : url}} , {new : true})
+
+    res.statusCode = 200
+    res.setHeader('content-type' , 'application/json')
+    res.redirect('http://localhost:3000')
 })
 .delete((req , res , next) =>{
     Contact.findByIdAndRemove(req.params.contactId)
