@@ -37,7 +37,7 @@ router.route('/')
     })
 })
 
-router.route('/contactId')
+router.route('/:contactId')
 .get((req , res , next) =>{
     Contact.findById(req.params.contactId)
     .then(contact =>{
