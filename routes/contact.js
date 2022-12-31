@@ -49,7 +49,7 @@ router.route('/contactId')
     .then(contact =>{
         res.statusCode = 200
         res.setHeader('content-type' , 'application/json')
-        res.json(contact)
+        res.redirect('http://localhost:3000')
     }, err => next(err))
     .catch(err => next(err))
 })
@@ -58,7 +58,7 @@ router.route('/contactId')
     .then(response =>{
         res.statusCode = 200
         res.setHeader('content-type' , 'application/json')
-        res.json(response)
+        res.redirect('http://localhost:3000')
     }, err => next(err))
     .catch(err => next(err))
 })
