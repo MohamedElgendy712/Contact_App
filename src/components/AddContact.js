@@ -4,7 +4,7 @@ function AddContact() {
 
     return (
         <div className="add-contact">
-            <form action='localhost//:4000/contact' method='post' encrypt='multipart/form-data'>
+            <form action='http://localhost:4000/contact' method='POST' encType='multipart/form-data'>
                 <div className='input-container'>
                     <label htmlFor='first_name'>First Name :</label>
                     <input type="text" id='first_name'  name='firstName'/>
@@ -23,9 +23,9 @@ function AddContact() {
                 </div>
                 <div className='input-container'>
                     <label htmlFor='img'>Upload Image :</label>
-                    <input type="file" id='img' accept='image/*' name='image'/>
+                    <input type="file" id='img' accept='image/*' name='image' />
                 </div>
-                <button id='create'>Create</button>
+                <input type="submit" id='create' value='Create' />
             </form>
         </div>
     )

@@ -6,11 +6,11 @@ function ContactList({contactList , handleSelectedContact}) {
         <div className='contact-list'>
             {contactList.map((contact) => {
                 return <Link 
-                                to={`/${contact.first_name}`} 
+                                to={`/${contact.firstName}`} 
                                 className='link'
-                                onClick={() => handleSelectedContact(contact.id)}
+                                onClick={() => handleSelectedContact(contact._id)}
                                 > 
-                                    <li>{contact.first_name} {contact.last_name}</li>
+                                    <li key={contact._id}>{contact.firstName} {contact.secondName}</li>
                         </Link>
                         
             })}

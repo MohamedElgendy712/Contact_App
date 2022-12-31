@@ -10,7 +10,7 @@ function Search() {
                 <MdSearch size='1.3rem' fill='grey'/>
                 <input type="text" placeholder='Search...'/>
             </div>
-            <Link to='/'><Button content={'New'} color={'#3992ff'}/></Link>
+            <Link to='/new'><Button content={'New'} color={'#3992ff'}/></Link>
         </div>
     )
 }

@@ -111,7 +111,7 @@ button{
 .contact-item .image{
   width: 180px;
   height: 180px;
-  background-color: red;
+  /* background-color: red; */
   border-radius: 8px;
   margin-right: 60px;
 }
@@ -132,7 +132,8 @@ button{
   margin-right: 10px;
 }
 
-.add-contact{
+.add-contact,
+.edit-contact{
   width: 40%;
 }
 .input-container{
